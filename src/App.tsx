@@ -2,9 +2,9 @@ import React, { useState, lazy, Suspense } from 'react';
 
 import {
   UploadOutlined, UserOutlined, VideoCameraOutlined, MenuFoldOutlined,
-  MenuUnfoldOutlined, CheckOutlined, CloseOutlined
+  MenuUnfoldOutlined,
 } from '@ant-design/icons';
-import { Button, Layout, Menu, Switch, theme} from 'antd';
+import { Button, Layout, Menu, theme} from 'antd';
 import './App.css'
 const { Header, Content, Sider } = Layout;
 const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
@@ -53,15 +53,6 @@ const App: React.FC = () => {
                     height: 64,
                   }}
                 /> : []}
-                <Switch
-                onChange={(data)=>{
-                  console.log(data);
-                  setThemeMode("light")                 
-                }}
-                  checkedChildren={<CheckOutlined />}
-                  unCheckedChildren={<CloseOutlined />}
-                  defaultChecked
-                />
               </Header>
               <Content style={{ margin: '24px 16px 0' }}>
                 <div
