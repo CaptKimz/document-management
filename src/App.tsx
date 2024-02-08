@@ -4,7 +4,7 @@ import {
   UploadOutlined, UserOutlined, VideoCameraOutlined, MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
-import { Button, Layout, Menu, theme} from 'antd';
+import { Button, Card, Layout, Menu} from 'antd';
 import './App.css'
 const { Header, Content, Sider } = Layout;
 const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
@@ -17,9 +17,6 @@ const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].
 const Home = lazy(() => import('./pages/HomePage'));
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 const App: React.FC = () => {
-  const {
-    token: { colorBgContainer, borderRadiusLG }
-  } = theme.useToken();
   const [collapsed, setCollapsed] = useState(false);
   const [hideButton, setHideButton] = useState(false);
   return (
@@ -37,12 +34,10 @@ const App: React.FC = () => {
                 setCollapsed((data) => !data)
               }}
             >
-              <div className="demo-logo-vertical" />
-              <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
+              <Menu theme="light" mode="inline" defaultSelectedKeys={['4']} items={items} />
             </Sider>
             <Layout>
               <Header style={{ padding: 0,  display: "flex", alignItems: "center" }} >
-
                 {hideButton ? <Button
                   type="text"
                   icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -54,19 +49,17 @@ const App: React.FC = () => {
                   }}
                 /> : []}
               </Header>
-              <Content style={{ margin: '24px 16px 0' }}>
-                <div
+              <Content style={{ margin: '16px 16px 0' }}>
+                <Card
                   style={{
                     padding: 24,
                     minHeight: 360,
-                    background: colorBgContainer,
-                    borderRadius: borderRadiusLG,
                   }}
                 >
                   <Routes>
                     <Route path="/" element={<Home />} />
                   </Routes>
-                </div>
+                </Card>
               </Content>
             </Layout>
           </Layout>
