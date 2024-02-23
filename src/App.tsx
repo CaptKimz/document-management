@@ -20,7 +20,7 @@ import useTheme from './hooks/useTheme.tsx';
 
 const App: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [hideButton, setHideButton] = useState(false);
+  // const [hideButton, setHideButton] = useState(false);
   const { setThemeConfig } = useTheme();
   return (
     <BrowserRouter>
