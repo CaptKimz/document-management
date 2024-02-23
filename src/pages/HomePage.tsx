@@ -1,13 +1,9 @@
-import { Button, Typography } from "antd";
-import useTheme from "../hooks/useTheme";
-
+import { Typography } from "antd";
 
 export default function HomePage(){
-  const { setThemeConfig,themeConfig } = useTheme();
   return (
     <>
     <Typography>HomePage</Typography>
-    <Button onClick={()=>setThemeConfig((prev)=>({...prev,theme:prev.theme==="light"?"dark":"light"}))}></Button>
     </>
   )
 }

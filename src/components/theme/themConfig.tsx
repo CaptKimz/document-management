@@ -1,22 +1,47 @@
 import type { ThemeConfig } from 'antd';
 import { theme } from 'antd';
-const darkConfig: ThemeConfig = {
-  algorithm: theme.darkAlgorithm,
-  token: {
-  },
-};
+const { darkAlgorithm, compactAlgorithm } = theme;
 
-const lightConfig: ThemeConfig = {
-  algorithm: theme.defaultAlgorithm,
-  token: {
-  },
-};
+type Token=ThemeConfig["token"]
 
-export const configAll = (theme: string) => {  
+const darkFunc=(token:Token)=>{
+  const darkConfig: ThemeConfig = {
+    algorithm: [darkAlgorithm,compactAlgorithm],
+    token: {
+      ...token
+    },
+  };
+  return darkConfig
+}
+
+
+const lightFunc=(token:Token)=>{
+  const lightConfig: ThemeConfig = {
+    algorithm: [compactAlgorithm],
+    token: {
+      ...token
+    },
+    components:{
+      Layout:{
+        siderBg:"white",
+        headerBg:"white",
+        colorIcon:"black"
+      },
+      Button:{
+        colorText:"black"
+      }
+    }
+    
+  };
+  
+  return lightConfig
+}
+
+export const configAll = (theme: string,token?:Token) => {  
   switch (theme) {
     case "dark":
-      return darkConfig
+      return darkFunc(token)
     default:
-      return lightConfig
+      return lightFunc(token)
   }
 }
